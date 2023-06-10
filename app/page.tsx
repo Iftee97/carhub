@@ -3,10 +3,17 @@ import SearchBar from "@/components/SearchBar"
 import CustomFilter from "@/components/CustomFilter"
 import CarCard from "@/components/CarCard"
 import { fetchCars } from "@/utils"
+import { HomeProps } from "@/types"
+import { fuels, yearsOfProduction } from "@/constants"
 
-export default async function Home() {
-  const allCars = await fetchCars()
-  console.log("allCars: >>>>>>>>>>>", allCars)
+export default async function Home({ searchParams }: HomeProps) {
+  const allCars = await fetchCars({
+    manufacturer: searchParams.manufacturer || "",
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 10,
+    model: searchParams.model || "",
+  })
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars // empty array or null or undefined
 
@@ -25,8 +32,8 @@ export default async function Home() {
         <div className="mt-12 w-full flex-between items-center flex-wrap gap-5">
           <SearchBar />
           <div className="flex justify-start flex-wrap items-center gap-2">
-            {/* <CustomFilter title="fuel" />
-            <CustomFilter title="year" /> */}
+            <CustomFilter title="fuel" options={fuels} />
+            <CustomFilter title="year" options={yearsOfProduction} />
           </div>
         </div>
         {!isDataEmpty ? (
