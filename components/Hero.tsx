@@ -4,12 +4,14 @@ import Image from "next/image"
 import CustomButton from "./CustomButton"
 
 export default function Hero() {
-  function handleScroll() { }
+  function handleScroll() {
+    console.log("handleScroll called")
+  }
 
   return (
     <div className="flex xl:flex-row flex-col gap-5 relative z-0 max-w-[1440px] mx-auto">
       <div className="flex-1 pt-36 sm:px-16 px-6">
-        <h1 className="2xl:text-[72px] sm:text-[64px] text-[50px] font-extrabold">
+        <h1 className="2xl:text-[72px] sm:text-[64px] text-[50px] leading-[64px] lg:leading-[84px] font-extrabold">
           Find, Book, or Rent a car - quickly and easily
         </h1>
         <p className="text-[27px] text-black-100 font-light mt-5">
