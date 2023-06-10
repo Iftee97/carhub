@@ -30,7 +30,7 @@ export default async function Home({ searchParams }: HomeProps) {
             Explore the cars you might like
           </p>
         </div>
-        <div className="mt-12 w-full flex-between items-center flex-wrap gap-5">
+        <div className="mt-12 w-full flex justify-between items-center flex-wrap gap-5">
           <SearchBar />
           <div className="flex justify-start flex-wrap items-center gap-2">
             <CustomFilter title="fuel" options={fuels} />
@@ -50,7 +50,7 @@ export default async function Home({ searchParams }: HomeProps) {
             />
           </section>
         ) : (
-          <div>
+          <div className="mt-16 flex justify-center items-center flex-col gap-2">
             <h2 className="text-black text-xl font-bold">
               oops, no results
             </h2>
